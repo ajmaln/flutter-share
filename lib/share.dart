@@ -13,12 +13,14 @@ class ShareType {
 
   static const ShareType TYPE_PLAIN_TEXT = const ShareType._internal("text/plain");
   static const ShareType TYPE_IMAGE = const ShareType._internal("image/*");
+  static const ShareType TYPE_PDF = const ShareType._internal("application/pdf");
   static const ShareType TYPE_FILE = const ShareType._internal("*/*");
 
   static List<ShareType> values() {
     List values = new List<ShareType>();
     values.add(TYPE_PLAIN_TEXT);
     values.add(TYPE_IMAGE);
+    values.add(TYPE_PDF);
     values.add(TYPE_FILE);
     return values;
   }
@@ -198,6 +200,7 @@ class Share {
         break;
 
       case ShareType.TYPE_IMAGE:
+      case ShareType.TYPE_PDF:
       case ShareType.TYPE_FILE:
         if (isMultiple) {
           for (var i = 0; i < shares.length; i++) {
